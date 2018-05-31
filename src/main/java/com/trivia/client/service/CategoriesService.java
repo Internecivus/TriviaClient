@@ -35,7 +35,6 @@ public class CategoriesService extends Service<List<Category>> {
                 if (response.getStatusInfo().equals(Response.Status.OK)) {
                     response.bufferEntity();
                     categories = response.readEntity(new GenericType<List<Category>>() {});
-
                     List<String> imagePaths = categories
                         .stream().map(q -> q.getImage()).filter(g -> Objects.nonNull(g)).collect(Collectors.toList());
 
