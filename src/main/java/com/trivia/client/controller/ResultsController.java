@@ -2,18 +2,25 @@ package com.trivia.client.controller;
 
 import com.trivia.client.model.Game;
 import com.trivia.client.service.GameManager;
-import com.trivia.client.view.StageManager;
+import com.trivia.client.utility.i18n;
+import com.trivia.client.view.FXMLEnum;
+import com.trivia.client.utility.StageManager;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 
 
-// TODO: Present the score and time
-// TODO: Give the option to play a new game
-// TOOO: Social media sharing
+
 public class ResultsController {
     private StageManager stageManager;
     private Game game;
 
+    private @FXML AnchorPane mainPane;
     private @FXML Label scoreLbl;
     private @FXML Label timeLbl;
 
@@ -24,8 +31,40 @@ public class ResultsController {
 
     @FXML
     private void initialize() {
-        scoreLbl.setText(String.valueOf(game.getScore()));
-        timeLbl.setText(String.format("%.2f", game.getTime()));
+        scoreLbl.setText(String.format("%d/%d", game.getScore(), game.getGameDuration().getSize()));
+        scoreLbl.setFont(resizeScore(scoreLbl.getFont()));
+        timeLbl.setText(String.format("%.2f/%ds", game.getTime(), game.getGameDuration().getSize() * Game.ANSWER_TIMER_DURATION));
+
+        setImage();
+    }
+
+    private void setImage() {
+        BackgroundImage backgroundImage = new BackgroundImage(new Image("/images/results.jpg"),
+            BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, true));
+
+        mainPane.setBackground(new Background(backgroundImage));
+    }
+
+    @FXML
+    private Font resizeScore(Font oldFont) {
+        double scorePercentage = (double) game.getScore() / game.getGameDuration().getSize();
+        Font newFont = new Font(oldFont.getName(), oldFont.getSize() + oldFont.getSize() * scorePercentage);
+        return newFont;
+    }
+
+    @FXML
+    private void restart() {
+        GameManager.reset();
+        stageManager.switchScene(FXMLEnum.CATEGORIES);
+    }
+
+    @FXML
+    private void exit() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, i18n.get("exit.confirmation.message"), ButtonType.NO, ButtonType.YES);
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.YES) {
+            Platform.exit();
+        }
     }
 
 }

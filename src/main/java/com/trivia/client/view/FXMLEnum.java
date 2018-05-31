@@ -52,6 +52,5 @@ public enum FXMLEnum {
     };
 
     public abstract String getFxmlFile();
-
     public abstract String getTitle();
 }

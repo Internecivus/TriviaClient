@@ -1,16 +1,20 @@
 package com.trivia.client.service;
 
 import com.trivia.client.model.Game;
-import com.trivia.client.view.StageManager;
-import javafx.stage.Stage;
 
 public class GameManager {
     private static Game instance;
 
-    private GameManager(){}
+    private GameManager() {}
 
-    public static synchronized Game getGame(){
-        if(instance == null){
+    public static synchronized void reset() {
+        Game resetGame = new Game();
+        resetGame.setGameDuration(instance.getGameDuration());
+        instance = resetGame;
+    }
+
+    public static synchronized Game getGame() {
+        if(instance == null) {
             instance = new Game();
         }
         return instance;

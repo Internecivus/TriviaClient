@@ -1,8 +1,7 @@
 package com.trivia.client.model;
 
-/**
- * Created by faust. Part of TriviaClient Project. All rights reserved. 2018
- */
+
+
 public class Question {
     private Integer id;
     private String question;

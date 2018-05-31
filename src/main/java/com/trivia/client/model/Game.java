@@ -1,26 +1,39 @@
 package com.trivia.client.model;
 
-import java.util.Date;
+import com.trivia.client.service.GameManager;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Game {
-    //TODO: maybe have a short, medium, long game options? (10, 20, 50 questions)
-    public final static int QUESTION_RANDOM_SIZE_SHORT = 10;
-    public final static int QUESTION_RANDOM_SIZE_MEDIUM = 20;
-    public final static int QUESTION_RANDOM_SIZE_LONG = 50;
-    public final static int ANSWER_TIMER_DURATION = 20; // seconds
+    public final static int ANSWER_TIMER_DURATION = 15; // seconds
 
     private List<Question> questions;
-    private Integer currentQuestionPos;
+    private int currentQuestionPos;
     private Category category;
     private int score;
     private double time; // in seconds
+    private GameDuration gameDuration;
 
-    public Integer getCurrentQuestionPos() {
+    public List<String> getAllImagePaths() {
+        return questions.stream().map(q -> q.getImage()).filter(g -> Objects.nonNull(g)).collect(Collectors.toList());
+    }
+
+    public GameDuration getGameDuration() {
+        return gameDuration;
+    }
+
+    public void setGameDuration(GameDuration gameDuration) {
+        this.gameDuration = gameDuration;
+    }
+
+    public int getCurrentQuestionPos() {
         return currentQuestionPos;
     }
 
-    public void setCurrentQuestionPos(Integer currentQuestionPos) {
+    public void setCurrentQuestionPos(int currentQuestionPos) {
         this.currentQuestionPos = currentQuestionPos;
     }
 

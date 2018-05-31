@@ -1,69 +1,114 @@
 package com.trivia.client.service;
 
-import com.trivia.client.model.Question;
+import com.trivia.client.exception.ServerConnectionException;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 
+import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Base64;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
+
+
 
 public class ClientManager {
-    public final static String SERVER_URI = "localhost:8080";
-    public final static String SERVER_API = SERVER_URI + "/api";
-    private final String PROVIDER_KEY = "555555555";
-    private final String PROVIDER_SECRET = "5555555555";
-    private final String REGISTER_URI = "/register";
-    private String API_KEY;
-    private String API_SECRET;
+    public final static String SERVER_HOST = "http://ec2-52-15-171-42.us-east-2.compute.amazonaws.com";
+    public final static String SERVER_PORT = "8080";
+    public final static String SERVER_SOCKET = SERVER_HOST + ":" + SERVER_PORT;
+    public final static String API_PATH =  "api";
 
+    /**
+     * {@link ClientManager#PROVIDER_KEY} and {@link ClientManager#PROVIDER_SECRET}
+     * are the values that every client application provider has to provide in order for the client
+     * to be able to register itself. Hardcoding it is not perfect but it is enough for now.
+     */
+    private final static String PROVIDER_KEY = "ZRTW4nVBGBfks6Df9LjRwBMFhrPMQw04";
+    private final static String PROVIDER_SECRET = "hEhp9+3fhFSjPl8DD/JAOsMRKXR3AyV6";
 
-//    public void registerClient() {
-//        WebTarget target = client.target(ClientManager.CLIENT_URI);
-//
-//
-//
-//
-//        Response response = target.path("/register").request(MediaType.APPLICATION_JSON_TYPE).post();
-//        response.close();
-//
-//        Question question = response.readEntity(Question.class);
+    private static String API_KEY = null;
+    private static String API_SECRET = null;
 
-  //  prefs = Preferences.userRoot().node(this.getClass().getName());
-//
-//        client.close();
-//    }
-//
-//    public void createClient() {
-//        Client triviaApiClient = ClientBuilder.newBuilder()
-//                .property("connection.timeout", 100)
-//                //.sslContext(sslContext)
-//                //.register(JacksonJso.class)
-//                .build()
-//        Client client = ClientBuilder.newClient();
-//
-//
-//
-//        HttpAuthenticationFeature feature = HttpAuthenticationFeature.basicBuilder().build();
-//        client.register(feature);
-//        client.register(SseFeature.class);
-//        WebTarget target = client.target(baseurl + "/v1/devices/events/")
-//                .property(HttpAuthenticationFeature.HTTP_AUTHENTICATION_BASIC_USERNAME, "...")
-//                .property(HttpAuthenticationFeature.HTTP_AUTHENTICATION_BASIC_PASSWORD, "...");
-//
-//
-//                .header("Authorization", authHeader)
-//
-//        String authHeader = java.util.Base64.getEncoder().encodeToString((API_KEY + ":" + API_SECRET).getBytes());
-//
-//
-//        triviaApiClient  = triviaApiClient
-//                .target(SERVER_URI)
-//                .path("public/codingmarks")
-//                .queryParam("location", location)
-//                .request(MediaType.APPLICATION_JSON)
-//
-//                .get();
-//    }
+    private static Client client;
+    private static Preferences clientPreferences = Preferences.userRoot().node("Trivia").node("client");
+
+    public static void init() {
+        client = ClientBuilder.newClient();
+
+        API_KEY = clientPreferences.get("API_KEY", null);
+        API_SECRET = clientPreferences.get("API_SECRET", null);
+
+        if (API_KEY == null || API_SECRET == null) {
+            register();
+        }
+    }
+
+    public static WebTarget getApiTarget() {
+        client = setAuthorization(client, API_KEY, API_SECRET);
+
+        WebTarget target;
+        target = client.target(SERVER_SOCKET).path(API_PATH);
+        return target;
+    }
+
+    public static WebTarget getServerTarget() {
+        WebTarget target;
+        target = client.target(SERVER_SOCKET);
+        return target;
+    }
+
+    private static Client setAuthorization(Client client, String username, String password) {
+        HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic(username, password);
+        client.register(feature);
+        return client;
+    }
+
+    public static void close() {
+        client.close();
+    }
+
+    private static void register() {
+        client = setAuthorization(client, PROVIDER_KEY, PROVIDER_SECRET);
+        WebTarget target;
+        target = client.target(SERVER_SOCKET).path(API_PATH);
+        Response response = target
+            .path("client")
+            .queryParam("register", true)
+            .request(MediaType.APPLICATION_JSON_TYPE)
+            .post(null);
+
+        if (response.getStatusInfo().equals(Response.Status.CREATED)) {
+            parseAndSaveAuthorization(response.getHeaderString(HttpHeaders.AUTHORIZATION));
+        }
+        else {
+            throw new IllegalStateException();
+        }
+        response.close();
+    }
+
+    private static void parseAndSaveAuthorization(String rawHeader) {
+        if (rawHeader != null && rawHeader.startsWith("Basic ")) {
+            String[] headerCredential = new String(
+                Base64.getDecoder().decode(rawHeader.substring("Basic ".length()))).split(":");
+            API_KEY = headerCredential[0];
+            API_SECRET = headerCredential[1];
+            saveAuthorization();
+        }
+        else {
+            throw new IllegalStateException();
+        }
+    }
+
+    private static void saveAuthorization() {
+        clientPreferences.put("API_KEY", API_KEY);
+        clientPreferences.put("API_SECRET", API_SECRET);
+    }
+
+    public static Client getClient() {
+        return client;
+    }
 }

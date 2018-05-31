@@ -1,0 +1,68 @@
+/*.answerButton {*/
+    /*-fx-font: 16px "Serif";*/
+    /*-fx-padding: 10;*/
+    /*-fx-background-color: #CCFF99;*/
+/*}*/
+
+/*.button {*/
+    /*-fx-font: 16px "Serif";*/
+    /*-fx-padding: 10;*/
+    /*-fx-background-color: #CCFF99;*/
+/*}*/
+
+.tile {
+    -fx-border-color: black;
+    -fx-border-radius: 4;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+}
+
+.tile:hover {
+    -fx-border-width: 2;
+}
+
+.button:disabled {
+    -fx-opacity: 1.0;
+}
+
+.answerCorrect {
+    -fx-background-color: #86ff00 !important;
+}
+
+.answerIncorrect {
+    -fx-background-color: #ff3400 !important;
+}
+
+.boxLabel {
+    -fx-background-color: whitesmoke;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.dialogContent {
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.dialogContent > label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.dialogContent > *.label.content{
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+.progressBarFine > .bar {
+    -fx-background-color: #5bc0de !important;
+}
+
+.progressBarCaution > .bar {
+    -fx-background-color: #f0ad4e !important;
+}
+
+.progressBarWarn > .bar {
+    -fx-background-color: #d9534f !important;
+}

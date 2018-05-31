@@ -1,17 +1,21 @@
 package com.trivia.client;
 
+import com.trivia.client.utility.ImageUtils;
+import com.trivia.client.utility.StageSettings;
 import com.trivia.client.view.FXMLEnum;
-import com.trivia.client.view.StageManager;
+import com.trivia.client.utility.StageManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
     protected StageManager stageManager = null;
 
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) {
+        stage.getIcons().add(new Image("icon.png"));
+        ImageUtils.checkForClean();
+
         StageManager.getStageManager().init(stage);
         stageManager = StageManager.getStageManager();
         stageManager.switchScene(FXMLEnum.HOME);

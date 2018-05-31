@@ -1,3 +1,3 @@
-TODO: Korisnicke postavke za velicinu prozora, client id, etc.
-TODO: Na vise jezika
-TODO: Sharing rezultata na drustvenim mrezama
+TODO: Home Screen
+TODO: Categories
+TODO: On first start it does not load categories, just registers
