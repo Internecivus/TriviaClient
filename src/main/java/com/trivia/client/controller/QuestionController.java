@@ -4,9 +4,8 @@ import com.trivia.client.model.Game;
 import com.trivia.client.model.Question;
 import com.trivia.client.service.GameManager;
 import com.trivia.client.utility.FontSizeFinder;
-import com.trivia.client.utility.ImageUtils;
+import com.trivia.client.utility.ImageUtil;
 import com.trivia.client.utility.StageManager;
-import com.trivia.client.utility.StageSettings;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -85,7 +84,7 @@ public class QuestionController {
     private void setBackgroundImage() {
         String imagePath = (question.getImageData() == null) ?
             game.getCategory().getImageData().getPath() : question.getImageData().getPath();
-        BackgroundImage backgroundImage = new BackgroundImage(new Image("file:" + ImageUtils.IMAGE_DIR + "/" + imagePath),
+        BackgroundImage backgroundImage = new BackgroundImage(new Image("file:" + ImageUtil.IMAGE_DIR + "/" + imagePath),
             BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, true));
 
         mainPane.setBackground(new Background(backgroundImage));

@@ -1,6 +1,6 @@
 package com.trivia.client.service;
 
-import com.trivia.client.utility.ImageUtils;
+import com.trivia.client.utility.ImageUtil;
 
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class ImageTask implements Callable<String> {
         Response response = ClientManager
             .getServerTarget()
             .path("images/" + imagePath)
-            .request("image/" + ImageUtils.IMAGE_FORMAT)
+            .request("image/" + ImageUtil.IMAGE_FORMAT)
             .get();
 
         if (response.getStatusInfo().equals(Response.Status.OK)) {
@@ -27,7 +27,7 @@ public class ImageTask implements Callable<String> {
             InputStream imageStream = response.readEntity(InputStream.class);
 
             try {
-                ImageUtils.saveImage(imageStream, imagePath);
+                ImageUtil.saveImage(imageStream, imagePath);
             }
             catch (IOException e) {
                 e.printStackTrace();

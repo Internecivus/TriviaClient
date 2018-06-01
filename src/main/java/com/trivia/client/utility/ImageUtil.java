@@ -14,10 +14,12 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
 import java.util.Date;
 
-public class ImageUtils {
-    public static final Path IMAGE_DIR = Paths.get(System.getProperty("java.io.tmpdir") + "Trivia/images");
+public class ImageUtil {
+    public static final Path IMAGE_DIR = Paths.get(TempUtil.TEMP_DIR + "/images");
     public static final String IMAGE_FORMAT = "png";
     private static final int DIR_MAX_SIZE = 1024 * 1024 * 100; // 100 mb
+
+    private ImageUtil() {}
 
     public static void saveImage(InputStream imageStream, String imagePath) throws IOException {
         BufferedImage bufferedImage = ImageIO.read(imageStream);

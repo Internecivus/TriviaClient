@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public final class StageManager {
     private static StageManager instance;
 
-    private StageManager(){}
+    private StageManager() {}
 
     public static synchronized StageManager getStageManager() {
         if (instance == null) {
@@ -31,16 +31,14 @@ public final class StageManager {
 
     public void init(Stage stage) {
         this.primaryStage = stage;
+        TempUtil.init();
         StageSettings.init(stage);
         i18n.init();
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                StageSettings.save();
-                i18n.save();
-                Platform.exit();
-                System.exit(0);
+                saveAndExit();
             }
         });
     }
@@ -87,9 +85,14 @@ public final class StageManager {
             Objects.requireNonNull(rootNode, "A Root FXMLEnum node must not be null!");
         }
         catch (Exception exception) {
-            Platform.exit();
+            saveAndExit();
         }
         return rootNode;
+    }
+
+    public static void saveAndExit() {
+        Platform.exit();
+        System.exit(0);
     }
 
     public Stage getPrimaryStage() {

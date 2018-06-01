@@ -6,7 +6,7 @@ import com.trivia.client.model.Game;
 import com.trivia.client.service.CategoriesService;
 import com.trivia.client.service.GameManager;
 import com.trivia.client.service.QuestionsService;
-import com.trivia.client.utility.ImageUtils;
+import com.trivia.client.utility.ImageUtil;
 import com.trivia.client.utility.StageManager;
 import com.trivia.client.view.FXMLEnum;
 import javafx.concurrent.WorkerStateEvent;
@@ -109,7 +109,7 @@ public class CategoriesController {
     private Background getCategoryImage(Category category) {
         // TODO size not programmatic
         BackgroundImage backgroundImage = new BackgroundImage(
-            new Image("file:" + ImageUtils.IMAGE_DIR + "/" + category.getImageData().getPath(), 600, 0, true, true, true),
+            new Image("file:" + ImageUtil.IMAGE_DIR + "/" + category.getImageData().getPath(), 600, 0, true, true, true),
             BackgroundRepeat.NO_REPEAT,
             BackgroundRepeat.NO_REPEAT,
             BackgroundPosition.CENTER,
