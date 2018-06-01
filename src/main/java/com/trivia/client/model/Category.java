@@ -1,10 +1,13 @@
 package com.trivia.client.model;
 
+import java.util.Date;
+
 public class Category {
     private Integer id;
     private String name;
-    private String image;
     private String description;
+
+    private ImageData imageData;
 
     public Integer getId() {
         return id;
@@ -22,19 +25,19 @@ public class Category {
         this.name = name;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ImageData getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(ImageData imageData) {
+        this.imageData = imageData;
     }
 }

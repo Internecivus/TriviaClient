@@ -1,6 +1,7 @@
 package com.trivia.client.service;
 
 import com.trivia.client.exception.ServerConnectionException;
+import com.trivia.client.model.ImageData;
 import com.trivia.client.model.Question;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -31,8 +32,9 @@ public class QuestionsService extends Service<List<Question>> {
                     response.bufferEntity();
                     questions = response.readEntity(new GenericType<List<Question>>() {});
                     GameManager.getGame().setQuestions(questions);
+                    List<ImageData> imageDatas = GameManager.getGame().getQuestionsImageData();
 
-                    Thread thread = new Thread(new ImageService(GameManager.getGame().getAllImagePaths()));
+                    Thread thread = new Thread(new ImageService(imageDatas));
                     thread.run();
                     try {
                         thread.join();

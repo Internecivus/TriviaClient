@@ -17,7 +17,7 @@ import java.util.prefs.Preferences;
 
 
 public class ClientManager {
-    public final static String SERVER_HOST = "http://ec2-52-15-171-42.us-east-2.compute.amazonaws.com";
+    public final static String SERVER_HOST = "http://ec2-13-59-87-221.us-east-2.compute.amazonaws.com";
     public final static String SERVER_PORT = "8080";
     public final static String SERVER_SOCKET = SERVER_HOST + ":" + SERVER_PORT;
     public final static String API_PATH =  "api";
@@ -71,6 +71,15 @@ public class ClientManager {
         client.close();
     }
 
+    public static void restart() {
+        close();
+        start();
+    }
+
+    public static void start() {
+        client = ClientBuilder.newClient();
+    }
+
     private static void register() {
         client = setAuthorization(client, PROVIDER_KEY, PROVIDER_SECRET);
         WebTarget target;
@@ -88,6 +97,7 @@ public class ClientManager {
             throw new IllegalStateException();
         }
         response.close();
+        restart();
     }
 
     private static void parseAndSaveAuthorization(String rawHeader) {

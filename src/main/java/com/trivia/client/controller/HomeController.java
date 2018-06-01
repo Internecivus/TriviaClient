@@ -1,5 +1,6 @@
 package com.trivia.client.controller;
 
+import com.trivia.client.utility.Alerts;
 import com.trivia.client.model.GameDuration;
 import com.trivia.client.service.ClientManager;
 import com.trivia.client.service.GameManager;
@@ -7,7 +8,6 @@ import com.trivia.client.utility.LocaleListCell;
 import com.trivia.client.utility.i18n;
 import com.trivia.client.view.FXMLEnum;
 import com.trivia.client.utility.StageManager;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -59,11 +59,7 @@ public class HomeController {
 
     @FXML
     private void exitApplication(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, i18n.get("exit.confirmation.message"), ButtonType.NO, ButtonType.YES);
-        alert.showAndWait();
-        if (alert.getResult() == ButtonType.YES) {
-            Platform.exit();
-        }
+        Alerts.showExit();
     }
 
     @FXML
@@ -94,14 +90,15 @@ public class HomeController {
         label.getStyleClass().add("dialogContent");
         dialog.getDialogPane().setContent(label);
 
-        ButtonType gameShortBtn = new ButtonType(i18n.get("game.duration.short"));
-        ButtonType gameMediumBtn = new ButtonType(i18n.get("game.duration.medium"));
-        ButtonType gameLongBtn = new ButtonType(i18n.get("game.duration.long"));
+        ButtonType gameShortBtn = new ButtonType(i18n.get("duration.short"));
+
+        ButtonType gameMediumBtn = new ButtonType(i18n.get("duration.medium"));
+        ButtonType gameLongBtn = new ButtonType(i18n.get("duration.long"));
         ButtonType cancelBtn = new ButtonType(i18n.get("cancel"), ButtonBar.ButtonData.CANCEL_CLOSE);
         dialog.getDialogPane().getButtonTypes().setAll(gameShortBtn, gameMediumBtn, gameLongBtn, cancelBtn);
-
         dialog.getDialogPane().getStyleClass().add("dialogContent");
 
+        dialog.initOwner(stageManager.getPrimaryStage());
         dialog.showAndWait();
         if (dialog.getResult() == (gameShortBtn)) {
             gameDuration = GameDuration.SHORT;

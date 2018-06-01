@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 /**
  * The idea partly taken from https://github.com/mvpjava/javafx-switching-scenes-part2-tutorial
@@ -39,6 +40,7 @@ public final class StageManager {
                 StageSettings.save();
                 i18n.save();
                 Platform.exit();
+                System.exit(0);
             }
         });
     }
@@ -76,7 +78,12 @@ public final class StageManager {
     private Parent loadViewNodeHierarchy(String fxmlFilePath) {
         Parent rootNode = null;
         try {
-            rootNode = FXMLLoader.load(getClass().getResource(fxmlFilePath));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFilePath));
+            loader.setResources(i18n.getBundle());
+            loader.load();
+            rootNode = loader.getRoot();
+
+            //rootNode = FXMLLoader.load(getClass().getResource(fxmlFilePath));
             Objects.requireNonNull(rootNode, "A Root FXMLEnum node must not be null!");
         }
         catch (Exception exception) {

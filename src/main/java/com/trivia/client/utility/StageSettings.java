@@ -7,9 +7,11 @@ import javafx.stage.WindowEvent;
 import java.util.prefs.Preferences;
 
 public class StageSettings {
-    private static double DEFAULT_WIDTH = 640;
-    private static double DEFAULT_HEIGHT = 480;
+    private static int DEFAULT_WIDTH = 640;
+    private static int DEFAULT_HEIGHT = 480;
     private static boolean DEFAULT_MAXIMIZED = false;
+    private static int MIN_WIDTH = 480;
+    private static int MIN_HEIGHT = 480;
 
     private static boolean maximized;
     private static double x;
@@ -21,13 +23,17 @@ public class StageSettings {
     private static Stage currentStage;
 
     public static void init(Stage stage) {
+        currentStage = stage;
+
         x = windowPreferences.getDouble("x", -1);
         y = windowPreferences.getDouble("y", -1);
         width = windowPreferences.getDouble("width", DEFAULT_WIDTH);
         height = windowPreferences.getDouble("height", DEFAULT_HEIGHT);
         maximized = windowPreferences.getBoolean("maximized", DEFAULT_MAXIMIZED);
 
-        currentStage = stage;
+        currentStage.setMinWidth(MIN_WIDTH);
+        currentStage.setMinHeight(MIN_HEIGHT);
+
         initListener();
     }
 
@@ -40,7 +46,6 @@ public class StageSettings {
         currentStage.setWidth(width);
         currentStage.setHeight(height);
         currentStage.setMaximized(maximized);
-        //currentStage.sizeToScene();
     }
 
     private static void setPosition() {

@@ -16,17 +16,20 @@
          <top>
             <StackPane>
                <children>
-                  <Label alignment="CENTER" maxWidth="320.0" styleClass="boxLabel" text="Results" textAlignment="CENTER">
+                  <Label alignment="CENTER" maxWidth="320.0" styleClass="boxLabel" text="%results.results" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </Label>
                </children>
                <padding>
-                  <Insets bottom="10.0" left="30.0" right="30.0" top="60.0" />
+                  <Insets bottom="10.0" left="30.0" right="30.0" top="80.0" />
                </padding>
             </StackPane>
          </top>
@@ -42,12 +45,12 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#restart" styleClass="custom-button" text="Again?">
+                        <Button mnemonicParsing="false" onAction="#restart" text="%results.restart">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#exit" text="Exit">
+                        <Button mnemonicParsing="false" onAction="#exit" text="%exit">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
@@ -71,7 +74,7 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label prefHeight="23.0" prefWidth="138.0" text="Your result">
+                  <Label prefHeight="23.0" prefWidth="138.0" text="%results.score">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -81,7 +84,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="18.0" prefWidth="138.0" text="Your time" GridPane.rowIndex="1">
+                  <Label prefHeight="18.0" prefWidth="138.0" text="%results.time" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -96,8 +99,11 @@
                   <Insets bottom="15.0" left="60.0" right="60.0" top="30.0" />
                </padding>
                <BorderPane.margin>
-                  <Insets bottom="15.0" left="60.0" right="60.0" top="30.0" />
+                  <Insets bottom="15.0" left="60.0" right="60.0" top="15.0" />
                </BorderPane.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
             </GridPane>
          </center>
       </BorderPane>

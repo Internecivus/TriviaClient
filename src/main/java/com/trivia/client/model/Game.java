@@ -2,9 +2,7 @@ package com.trivia.client.model;
 
 import com.trivia.client.service.GameManager;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Game {
@@ -17,8 +15,8 @@ public class Game {
     private double time; // in seconds
     private GameDuration gameDuration;
 
-    public List<String> getAllImagePaths() {
-        return questions.stream().map(q -> q.getImage()).filter(g -> Objects.nonNull(g)).collect(Collectors.toList());
+    public List<ImageData> getQuestionsImageData() {
+        return questions.stream().map(q -> q.getImageData()).filter(q -> Objects.nonNull(q)).collect(Collectors.toList());
     }
 
     public GameDuration getGameDuration() {

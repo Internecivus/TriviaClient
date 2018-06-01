@@ -2,6 +2,7 @@ package com.trivia.client.service;
 
 import com.trivia.client.exception.ServerConnectionException;
 import com.trivia.client.model.Category;
+import com.trivia.client.model.ImageData;
 import com.trivia.client.service.ClientManager;
 import com.trivia.client.service.GameManager;
 import com.trivia.client.service.ImageTask;
@@ -22,29 +23,37 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 
-public class ImageService implements Runnable {
-    private List<String> imagePaths;
 
-    public ImageService(List<String> imagePaths) {
-        imagePaths = imagePaths.stream().filter(i -> !ImageUtils.isSaved(i)).collect(Collectors.toList());
-        this.imagePaths = imagePaths;
+public class ImageService implements Runnable {
+    private List<ImageData> imageData;
+
+    /**
+     * Filter for usable images.
+     */
+    public ImageService(List<ImageData> imageData) {
+        imageData = imageData.stream().filter(i -> !ImageUtils
+            .isUsable(i)).collect(Collectors.toList());
+        this.imageData = imageData;
     }
 
     @Override
     public void run() {
-        if (imagePaths.size() == 0) return;
-        ExecutorService executor = Executors.newFixedThreadPool(imagePaths.size());
+        if (imageData == null || imageData.size() == 0) return;
+
+        // Exact thread pool size is still in question.
+        ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         List<Callable<String>> imageTasks = new ArrayList<>();
-        for (String imagePath : imagePaths) {
-            imageTasks.add(new ImageTask(imagePath));
-        }
+        imageData.forEach(i -> imageTasks.add(new ImageTask(i.getPath())));
         try {
             executor.invokeAll(imageTasks);
+            executor.shutdown();
         }
         catch (InterruptedException e) {
             e.printStackTrace();

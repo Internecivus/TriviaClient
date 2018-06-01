@@ -5,10 +5,7 @@ import java.util.prefs.Preferences;
 
 public class i18n {
     private static String DEFAULT_LANGUAGE = "en";
-    private static List<Locale> availableLocales = Arrays.asList(
-        new Locale("en"),
-        new Locale("hr")
-    );
+    private static List<Locale> availableLocales = Arrays.asList(new Locale("en"), new Locale("hr"));
 
     private static Locale currentLocale;
     private static Preferences localePreferences = Preferences.userRoot().node("Trivia").node("locale");
@@ -25,6 +22,10 @@ public class i18n {
 
     public static void save() {
         localePreferences.put("language", currentLocale.getLanguage());
+    }
+
+    public static ResourceBundle getBundle() {
+        return PropertyResourceBundle.getBundle("i18n", currentLocale);
     }
 
     public static String get(String key, Object... parameters) {

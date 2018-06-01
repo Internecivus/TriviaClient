@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.net.*?>
 <?import javafx.scene.image.*?>
@@ -20,45 +21,67 @@
                <top>
                   <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_CENTER">
+                        <ImageView fitHeight="130.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_CENTER">
                            <image>
                               <Image url="@../icon.png" />
                            </image>
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                         </ImageView>
                         <ComboBox fx:id="languageBox" prefWidth="120.0" StackPane.alignment="TOP_RIGHT">
                            <StackPane.margin>
                               <Insets right="15.0" top="15.0" />
                            </StackPane.margin>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                         </ComboBox>
                      </children>
+                     <padding>
+                        <Insets bottom="15.0" />
+                     </padding>
                   </StackPane>
                </top>
                <center>
-                  <GridPane alignment="CENTER" maxWidth="-Infinity" prefWidth="340.0" styleClass="boxLabel" BorderPane.alignment="CENTER">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
+                  <StackPane alignment="TOP_CENTER" BorderPane.alignment="TOP_CENTER">
                      <children>
-                      <Button mnemonicParsing="false" onAction="#exitApplication" text="Exit" GridPane.rowIndex="2" />
-                        <Label alignment="TOP_CENTER" prefHeight="44.0" prefWidth="171.0" text="Trivia" GridPane.halignment="CENTER">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" onAction="#startGame" text="New Game" GridPane.rowIndex="1" />
+                        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="250.0" styleClass="boxLabel" BorderPane.alignment="CENTER">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                            <Button mnemonicParsing="false" onAction="#exitApplication" text="%exit" GridPane.rowIndex="2" />
+                              <Label alignment="TOP_CENTER" prefHeight="44.0" prefWidth="171.0" text="Trivia" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#startGame" text="%home.new" GridPane.rowIndex="1" />
+                           </children>
+                           <BorderPane.margin>
+                              <Insets left="120.0" right="120.0" />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets bottom="15.0" top="25.0" />
+                           </padding>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </GridPane>
                      </children>
-                     <BorderPane.margin>
-                        <Insets left="120.0" right="120.0" />
-                     </BorderPane.margin>
-                  </GridPane>
+                  </StackPane>
                </center>
                <bottom>
-                  <Pane prefHeight="90.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <Pane prefWidth="200.0" BorderPane.alignment="CENTER" />
                </bottom>
             </BorderPane>
          </children>

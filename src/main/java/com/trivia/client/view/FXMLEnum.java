@@ -11,7 +11,7 @@ public enum FXMLEnum {
 
         @Override
         public String getTitle() {
-            return i18n.get("view.home.title");
+            return i18n.get("home.title");
         }
     },
 
@@ -23,7 +23,7 @@ public enum FXMLEnum {
 
         @Override
         public String getTitle() {
-            return i18n.get("view.categories.title");
+            return i18n.get("categories.title");
         }
     },
 
@@ -35,7 +35,7 @@ public enum FXMLEnum {
 
         @Override
         public String getTitle() {
-            return i18n.get("view.question.title");
+            return i18n.get("question.title");
         }
     },
 
@@ -47,7 +47,7 @@ public enum FXMLEnum {
 
         @Override
         public String getTitle() {
-            return i18n.get("view.results.title");
+            return i18n.get("results.title");
         }
     };
 

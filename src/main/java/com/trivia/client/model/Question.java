@@ -1,6 +1,7 @@
 package com.trivia.client.model;
 
 
+import java.util.Date;
 
 public class Question {
     private Integer id;
@@ -10,7 +11,15 @@ public class Question {
     private String answerThird;
     private String answerFourth;
     private int answerCorrect;
-    private String image;
+    private ImageData imageData;
+
+    public ImageData getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(ImageData imageData) {
+        this.imageData = imageData;
+    }
 
     public boolean isCorrect(int answerNo) {
         return (answerNo == answerCorrect);
@@ -70,13 +79,5 @@ public class Question {
 
     public void setAnswerCorrect(int answerCorrect) {
         this.answerCorrect = answerCorrect;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 }

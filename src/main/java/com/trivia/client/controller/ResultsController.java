@@ -1,14 +1,11 @@
 package com.trivia.client.controller;
 
+import com.trivia.client.utility.Alerts;
 import com.trivia.client.model.Game;
 import com.trivia.client.service.GameManager;
-import com.trivia.client.utility.i18n;
 import com.trivia.client.view.FXMLEnum;
 import com.trivia.client.utility.StageManager;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -60,11 +57,7 @@ public class ResultsController {
 
     @FXML
     private void exit() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, i18n.get("exit.confirmation.message"), ButtonType.NO, ButtonType.YES);
-        alert.showAndWait();
-        if (alert.getResult() == ButtonType.YES) {
-            Platform.exit();
-        }
+        Alerts.showExit();
     }
 
 }

@@ -1,5 +1,6 @@
-package com.trivia.client.exception;
+package com.trivia.client.utility;
 
+import com.trivia.client.utility.StageManager;
 import com.trivia.client.utility.i18n;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
@@ -11,11 +12,21 @@ import java.util.Arrays;
 public class Alerts {
     public static void showInternalError(Service... services) {
         Alert alert = new Alert(Alert.AlertType.ERROR, i18n.get("dialog.internalError.message"), ButtonType.OK, ButtonType.CLOSE);
+        alert.initOwner(StageManager.getStageManager().getPrimaryStage());
         alert.showAndWait();
         if (alert.getResult() == ButtonType.OK) {
             if (services.length > 0) Arrays.stream(services).forEach(s -> s.restart());
         }
         else if (alert.getResult() == ButtonType.CLOSE) {
+            Platform.exit();
+        }
+    }
+
+    public static void showExit() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, i18n.get("dialog.exit.message"), ButtonType.NO, ButtonType.YES);
+        alert.initOwner(StageManager.getStageManager().getPrimaryStage());
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.YES) {
             Platform.exit();
         }
     }

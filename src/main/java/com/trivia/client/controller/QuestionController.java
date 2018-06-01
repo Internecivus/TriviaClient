@@ -6,6 +6,7 @@ import com.trivia.client.service.GameManager;
 import com.trivia.client.utility.FontSizeFinder;
 import com.trivia.client.utility.ImageUtils;
 import com.trivia.client.utility.StageManager;
+import com.trivia.client.utility.StageSettings;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -81,8 +82,9 @@ public class QuestionController {
         );
     }
 
-    private void setImage() {
-        String imagePath = (question.getImage() == null) ? game.getCategory().getImage() : question.getImage();
+    private void setBackgroundImage() {
+        String imagePath = (question.getImageData() == null) ?
+            game.getCategory().getImageData().getPath() : question.getImageData().getPath();
         BackgroundImage backgroundImage = new BackgroundImage(new Image("file:" + ImageUtils.IMAGE_DIR + "/" + imagePath),
             BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, true));
 
@@ -94,11 +96,11 @@ public class QuestionController {
         questionLbl.setText(question.getQuestion());
         // TODO: Not working fine?!?!?
         // I don't know of a better way to do this, since the real width gets calculated only after the scene is shown.
-        double realWidth = StageManager.getStageManager().getPrimaryStage().getWidth() - headerPane.getPadding().getLeft()
-            - headerPane.getPadding().getRight() - questionLbl.getPadding().getLeft() - questionLbl.getPadding().getRight();
-
+        double realWidth = stageManager.getPrimaryStage().getWidth()
+            - headerPane.getPadding().getLeft() - headerPane.getPadding().getRight()
+            - questionLbl.getPadding().getLeft() - questionLbl.getPadding().getRight();
         questionLbl.setStyle(String.format("-fx-font-size: %dpx;", FontSizeFinder.findFor(
-            questionLbl.getFont(), questionLbl.getText(), realWidth, 2))
+            questionLbl.getFont(), questionLbl.getText(), realWidth, 90, 2))
         );
 
         answerFirstBtn.setText(question.getAnswerFirst());
@@ -110,7 +112,7 @@ public class QuestionController {
         answerThirdBtn.setUserData(3);
         answerFourthBtn.setUserData(4);
 
-        setImage();
+        setBackgroundImage();
 
         startTimer();
     }

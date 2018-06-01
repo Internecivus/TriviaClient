@@ -15,9 +15,4 @@ Kod serverske aplikacije dostupan je na [GitHubu](https://github.com/Internecivu
 
 2. Downloadajte i instalirajte [Maven](https://maven.apache.org). (Opcionalno možete koristiti IDE koji ima integraciju s Mavenom kao što je IntelliJ)
 
-3. Izvršni JAR generirate naredbom `mvn package`.
-
-
-TODO: Home Screen
-TODO: Categories
-TODO: On first start it does not load categories, just registers
+3. Izvršni JAR (`Trivia.jar`) generirate tako da navigirate u direktorij projekta i pokrenete naredbu `mvn package`.
