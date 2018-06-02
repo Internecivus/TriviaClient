@@ -1,9 +1,7 @@
 package com.trivia.client;
 
-import com.trivia.client.service.ClientManager;
-import com.trivia.client.utility.ImageUtil;
-import com.trivia.client.view.FXMLEnum;
 import com.trivia.client.utility.StageManager;
+import com.trivia.client.view.FXMLEnum;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;

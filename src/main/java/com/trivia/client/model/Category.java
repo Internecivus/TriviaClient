@@ -1,7 +1,5 @@
 package com.trivia.client.model;
 
-import java.util.Date;
-
 public class Category {
     private Integer id;
     private String name;

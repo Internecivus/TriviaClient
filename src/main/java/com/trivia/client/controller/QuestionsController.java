@@ -1,12 +1,9 @@
 package com.trivia.client.controller;
 
 import com.trivia.client.model.Game;
-import com.trivia.client.model.Question;
 import com.trivia.client.service.GameManager;
-import com.trivia.client.view.FXMLEnum;
 import com.trivia.client.utility.StageManager;
-
-import java.util.List;
+import com.trivia.client.view.FXMLEnum;
 
 public class QuestionsController {
     private Game game;

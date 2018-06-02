@@ -1,8 +1,6 @@
 package com.trivia.client.model;
 
 
-import java.util.Date;
-
 public class Question {
     private Integer id;
     private String question;

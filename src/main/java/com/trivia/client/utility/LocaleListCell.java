@@ -2,7 +2,6 @@ package com.trivia.client.utility;
 
 import javafx.scene.control.ListCell;
 
-import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class LocaleListCell extends ListCell<Locale> {

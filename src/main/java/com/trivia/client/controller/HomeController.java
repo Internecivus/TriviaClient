@@ -1,13 +1,12 @@
 package com.trivia.client.controller;
 
-import com.trivia.client.utility.Alerts;
 import com.trivia.client.model.GameDuration;
-import com.trivia.client.service.ClientManager;
 import com.trivia.client.service.GameManager;
+import com.trivia.client.utility.Alerts;
 import com.trivia.client.utility.LocaleListCell;
+import com.trivia.client.utility.StageManager;
 import com.trivia.client.utility.i18n;
 import com.trivia.client.view.FXMLEnum;
-import com.trivia.client.utility.StageManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -18,7 +17,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.StageStyle;
 
-import java.util.Arrays;
 import java.util.Locale;
 
 public class HomeController {

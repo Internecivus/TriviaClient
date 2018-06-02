@@ -1,9 +1,7 @@
 package com.trivia.client.service;
 
-import com.trivia.client.exception.ServerConnectionException;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 
-import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -11,7 +9,6 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Base64;
-import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 

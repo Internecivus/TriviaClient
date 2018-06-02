@@ -6,7 +6,9 @@ import com.trivia.client.model.ImageData;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
-import javax.ws.rs.core.*;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;

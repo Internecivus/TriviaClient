@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 /**
  * The idea partly taken from https://github.com/mvpjava/javafx-switching-scenes-part2-tutorial

@@ -1,8 +1,7 @@
 package com.trivia.client.model;
 
-import com.trivia.client.service.GameManager;
-
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Game {

@@ -1,10 +1,10 @@
 package com.trivia.client.controller;
 
-import com.trivia.client.utility.Alerts;
 import com.trivia.client.model.Game;
 import com.trivia.client.service.GameManager;
-import com.trivia.client.view.FXMLEnum;
+import com.trivia.client.utility.Alerts;
 import com.trivia.client.utility.StageManager;
+import com.trivia.client.view.FXMLEnum;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

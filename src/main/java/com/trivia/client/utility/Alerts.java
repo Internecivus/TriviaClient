@@ -1,8 +1,5 @@
 package com.trivia.client.utility;
 
-import com.trivia.client.utility.StageManager;
-import com.trivia.client.utility.i18n;
-import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
