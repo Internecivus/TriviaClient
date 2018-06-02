@@ -1,7 +1,7 @@
 # TriviaClient
 
 ## TL;DR
-* **Gotova klijentska aplikacija se može preuzeti za [Mac](https://drive.google.com/open?id=12hg8_nKIvlq9OmiRs1PPcOa4wsy11uvT), [Windowse]() i kao [JAR](https://drive.google.com/open?id=1EKWCvWQ6dXgTcfOydx_rtQSLX97ECsdj).**
+* **Gotova klijentska aplikacija se može preuzeti za Mac, Windowse i kao JAR [ovdje](https://drive.google.com/open?id=1T8gWPx-VExwQIaaZ3CYgZUo1xAIyfBu7).**
 
 ## Opis
 Ovo je drugi dio projekta za Objektno Programiranje 2 i Uvod u XML programiranje.
