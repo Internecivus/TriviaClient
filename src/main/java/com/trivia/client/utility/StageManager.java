@@ -1,5 +1,6 @@
 package com.trivia.client.utility;
 
+import com.trivia.client.service.ClientManager;
 import com.trivia.client.view.FXMLEnum;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -31,6 +32,7 @@ public final class StageManager {
 
     public void init(Stage stage) {
         this.primaryStage = stage;
+        ClientManager.init();
         TempUtil.init();
         StageSettings.init(stage);
         i18n.init();
@@ -91,6 +93,8 @@ public final class StageManager {
     }
 
     public static void saveAndExit() {
+        StageSettings.save();
+        i18n.save();
         Platform.exit();
         System.exit(0);
     }

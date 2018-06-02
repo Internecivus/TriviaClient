@@ -12,11 +12,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.StageStyle;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 public class HomeController {
@@ -64,21 +66,13 @@ public class HomeController {
 
     @FXML
     private void startGame(ActionEvent event) {
-        try {
-            GameDuration gameDuration = gameDurationDialog();
-            if (gameDuration != null) {
-                GameManager.getGame().setGameDuration(gameDuration);
-                ClientManager.init();
-                stageManager.switchScene(FXMLEnum.CATEGORIES);
-            }
-        }
-        catch (Exception e) {
-            // TODO: handle error with dialog and retry
-            throw e;
+        GameDuration gameDuration = gameDurationDialog();
+        if (gameDuration != null) {
+            GameManager.getGame().setGameDuration(gameDuration);
+            stageManager.switchScene(FXMLEnum.CATEGORIES);
         }
     }
 
-    // TODO: Styles
     public GameDuration gameDurationDialog() {
         GameDuration gameDuration;
         Dialog<ButtonType> dialog = new Dialog<>();
@@ -88,25 +82,29 @@ public class HomeController {
 
         Label label = new Label(i18n.get("dialog.duration.message"));
         label.getStyleClass().add("dialogContent");
+        label.setAlignment(Pos.CENTER);
         dialog.getDialogPane().setContent(label);
 
-        ButtonType gameShortBtn = new ButtonType(i18n.get("duration.short"));
-
-        ButtonType gameMediumBtn = new ButtonType(i18n.get("duration.medium"));
-        ButtonType gameLongBtn = new ButtonType(i18n.get("duration.long"));
-        ButtonType cancelBtn = new ButtonType(i18n.get("cancel"), ButtonBar.ButtonData.CANCEL_CLOSE);
-        dialog.getDialogPane().getButtonTypes().setAll(gameShortBtn, gameMediumBtn, gameLongBtn, cancelBtn);
+        ButtonType gameShortBtnType = new ButtonType(i18n.get("duration.short"));
+        ButtonType gameMediumBtnType = new ButtonType(i18n.get("duration.medium"));
+        ButtonType gameLongBtnType = new ButtonType(i18n.get("duration.long"));
+        ButtonType cancelBtnType = new ButtonType(i18n.get("cancel"), ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().setAll(gameShortBtnType, gameMediumBtnType, gameLongBtnType, cancelBtnType);
         dialog.getDialogPane().getStyleClass().add("dialogContent");
+
+        Button cancelBtn = (Button) dialog.getDialogPane().lookupButton(cancelBtnType);
+        cancelBtn.managedProperty().bind(cancelBtn.visibleProperty());
+        cancelBtn.setVisible(false);
 
         dialog.initOwner(stageManager.getPrimaryStage());
         dialog.showAndWait();
-        if (dialog.getResult() == (gameShortBtn)) {
+        if (dialog.getResult() == (gameShortBtnType)) {
             gameDuration = GameDuration.SHORT;
         }
-        else if (dialog.getResult() == (gameMediumBtn)) {
+        else if (dialog.getResult() == (gameMediumBtnType)) {
             gameDuration = GameDuration.MEDIUM;
         }
-        else if (dialog.getResult() == (gameLongBtn)) {
+        else if (dialog.getResult() == (gameLongBtnType)) {
             gameDuration = GameDuration.LONG;
         }
         else {

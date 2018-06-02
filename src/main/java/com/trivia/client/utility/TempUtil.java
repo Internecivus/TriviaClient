@@ -13,6 +13,11 @@ public class TempUtil {
     private TempUtil() {}
 
     public static void init() {
+        checkExists();
+        ImageUtil.checkForClean();
+    }
+
+    public static void checkExists() {
         try {
             if (!Files.exists(TEMP_DIR)) {
                 Files.createDirectory(TEMP_DIR);

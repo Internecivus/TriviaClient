@@ -14,7 +14,7 @@
     -fx-border-color: #686254;
     -fx-border-radius: 4;
     -fx-shape:"m167,120c0,-5.43379 4.56621,-10 10,-10l186,0c5.43378,0 10,4.56621 10,10l0,186c0,5.43378 -4.56622,10 -10,10l-186,0c-5.43379,0 -10,-4.56622 -10,-10l0,-186z";
-    -fx-padding: 0 0 10 0;
+    -fx-padding: 0 0 3 0;
 }
 
 .listViewport {
@@ -33,7 +33,7 @@
     -fx-background-color: whitesmoke;
     -fx-border-radius: 4;
     -fx-background-radius: 4;
-    -fx-padding: 5 5 5 5;
+    -fx-padding: 3;
 }
 
 .button:disabled {

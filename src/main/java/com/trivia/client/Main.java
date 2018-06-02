@@ -1,5 +1,6 @@
 package com.trivia.client;
 
+import com.trivia.client.service.ClientManager;
 import com.trivia.client.utility.ImageUtil;
 import com.trivia.client.view.FXMLEnum;
 import com.trivia.client.utility.StageManager;
@@ -13,8 +14,6 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         stage.getIcons().add(new Image("icon.png"));
-        ImageUtil.checkForClean();
-
         StageManager.getStageManager().init(stage);
         stageManager = StageManager.getStageManager();
         stageManager.switchScene(FXMLEnum.HOME);

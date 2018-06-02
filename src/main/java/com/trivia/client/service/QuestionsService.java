@@ -27,10 +27,9 @@ public class QuestionsService extends Service<List<Question>> {
                     .header(HttpHeaders.CACHE_CONTROL, "no-cache")
                     .get();
 
-                List<Question> questions = null;
                 if (response.getStatusInfo().equals(Response.Status.OK)) {
                     response.bufferEntity();
-                    questions = response.readEntity(new GenericType<List<Question>>() {});
+                    List<Question> questions = response.readEntity(new GenericType<List<Question>>() {});
                     GameManager.getGame().setQuestions(questions);
                     List<ImageData> imageDatas = GameManager.getGame().getQuestionsImageData();
 
@@ -43,9 +42,16 @@ public class QuestionsService extends Service<List<Question>> {
                         e.printStackTrace();
                         throw new ServerConnectionException();
                     }
+                    finally {
+                        response.close();
+                    }
+
+                    return questions;
                 }
-                response.close();
-                return questions;
+                else {
+                    response.close();
+                    throw new IllegalStateException(response.getStatusInfo().toString() + " " + response.getEntity().toString());
+                }
             }
         };
     }

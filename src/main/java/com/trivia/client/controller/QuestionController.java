@@ -93,13 +93,17 @@ public class QuestionController {
     // Show the question and start the timer.
     private void addQuestion() {
         questionLbl.setText(question.getQuestion());
-        // TODO: Not working fine?!?!?
         // I don't know of a better way to do this, since the real width gets calculated only after the scene is shown.
-        double realWidth = stageManager.getPrimaryStage().getWidth()
+        // We could use delayed threads or in-memory replication to do this kinds of things, but that seems messy.
+        // On the other hand, this is too...
+        double questionLblWidth = stageManager.getPrimaryStage().getWidth()
+            - ((stageManager.getPrimaryStage().getWidth() - questionLbl.getPrefWidth() > 0) ?
+                stageManager.getPrimaryStage().getWidth() - questionLbl.getPrefWidth() : 0)
             - headerPane.getPadding().getLeft() - headerPane.getPadding().getRight()
             - questionLbl.getPadding().getLeft() - questionLbl.getPadding().getRight();
+
         questionLbl.setStyle(String.format("-fx-font-size: %dpx;", FontSizeFinder.findFor(
-            questionLbl.getFont(), questionLbl.getText(), realWidth, 90, 2))
+            questionLbl.getFont(), questionLbl.getText(), questionLblWidth, 2))
         );
 
         answerFirstBtn.setText(question.getAnswerFirst());

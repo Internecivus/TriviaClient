@@ -74,9 +74,6 @@ public class CategoriesController {
     }
 
     private void addCategories(List<Category> categories) {
-        categories.addAll(categories);
-        categories.addAll(categories);
-
         for (int i = 0; i < categories.size(); i++) {
             categoriesPane.add(getCategoryBox(categories.get(i)), i % ROW_SIZE, i / ROW_SIZE);
         }

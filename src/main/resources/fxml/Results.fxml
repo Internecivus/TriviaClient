@@ -67,7 +67,7 @@
             <GridPane maxWidth="-Infinity" prefWidth="320.0" styleClass="boxLabel" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="130.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="70.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="90.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" vgrow="SOMETIMES" />
@@ -89,14 +89,14 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="timeLbl" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="90.0" text="120 s" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+                  <Label fx:id="timeLbl" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="90.0" text="120.25/120 s" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                </children>
                <padding>
-                  <Insets bottom="15.0" left="60.0" right="60.0" top="30.0" />
+                  <Insets bottom="15.0" left="50.0" right="50.0" top="30.0" />
                </padding>
                <BorderPane.margin>
                   <Insets bottom="15.0" left="60.0" right="60.0" top="15.0" />

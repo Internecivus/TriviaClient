@@ -17,7 +17,7 @@ import java.util.prefs.Preferences;
 
 
 public class ClientManager {
-    public final static String SERVER_HOST = "http://ec2-13-59-87-221.us-east-2.compute.amazonaws.com";
+    public final static String SERVER_HOST = "http://ec2-52-14-48-132.us-east-2.compute.amazonaws.com";
     public final static String SERVER_PORT = "8080";
     public final static String SERVER_SOCKET = SERVER_HOST + ":" + SERVER_PORT;
     public final static String API_PATH =  "api";
@@ -28,7 +28,7 @@ public class ClientManager {
      * to be able to register itself. Hardcoding it is not perfect but it is enough for now.
      */
     private final static String PROVIDER_KEY = "ZRTW4nVBGBfks6Df9LjRwBMFhrPMQw04";
-    private final static String PROVIDER_SECRET = "hEhp9+3fhFSjPl8DD/JAOsMRKXR3AyV6";
+    private final static String PROVIDER_SECRET = "4tojgeiJsiqUWGAOF9JwwtekZ1tzzfJk";
 
     private static String API_KEY = null;
     private static String API_SECRET = null;

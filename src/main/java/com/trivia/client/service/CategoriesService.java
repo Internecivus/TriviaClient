@@ -24,10 +24,9 @@ public class CategoriesService extends Service<List<Category>> {
                     .request(MediaType.APPLICATION_JSON_TYPE)
                     .get();
 
-                List<Category> categories = null;
                 if (response.getStatusInfo().equals(Response.Status.OK)) {
                     response.bufferEntity();
-                    categories = response.readEntity(new GenericType<List<Category>>() {});
+                    List<Category> categories = response.readEntity(new GenericType<List<Category>>() {});
 
                     List<ImageData> imagesData = categories
                         .stream().map(c -> c.getImageData()).filter(c -> Objects.nonNull(c)).collect(Collectors.toList());
@@ -41,9 +40,16 @@ public class CategoriesService extends Service<List<Category>> {
                         e.printStackTrace();
                         throw new ServerConnectionException();
                     }
+                    finally {
+                        response.close();
+                    }
+
+                    return categories;
                 }
-                response.close();
-                return categories;
+                else {
+                    response.close();
+                    throw new IllegalStateException(response.getStatusInfo().toString() + " " + response.getEntity().toString());
+                }
             }
         };
     }
