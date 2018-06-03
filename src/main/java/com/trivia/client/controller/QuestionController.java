@@ -9,6 +9,8 @@ import com.trivia.client.utility.StageManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -110,10 +112,19 @@ public class QuestionController {
         answerSecondBtn.setText(question.getAnswerSecond());
         answerThirdBtn.setText(question.getAnswerThird());
         answerFourthBtn.setText(question.getAnswerFourth());
+
         answerFirstBtn.setUserData(1);
         answerSecondBtn.setUserData(2);
         answerThirdBtn.setUserData(3);
         answerFourthBtn.setUserData(4);
+
+        final BooleanProperty initialFocus = new SimpleBooleanProperty(true);
+        answerFirstBtn.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && initialFocus.get()){
+                mainPane.requestFocus();
+                initialFocus.setValue(false);
+            }
+        });
 
         setBackgroundImage();
 

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import java.net.URL?>
+
 <AnchorPane fx:id="mainPane" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trivia.client.controller.ResultsController">
    <children>
       <BorderPane layoutX="100.0" layoutY="-60.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -63,7 +67,7 @@
             <GridPane maxWidth="-Infinity" prefWidth="320.0" styleClass="boxLabel" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="130.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="90.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" vgrow="SOMETIMES" />
@@ -92,7 +96,7 @@
                   </Label>
                </children>
                <padding>
-                  <Insets bottom="15.0" left="50.0" right="50.0" top="30.0" />
+                  <Insets bottom="15.0" left="45.0" right="45.0" top="30.0" />
                </padding>
                <BorderPane.margin>
                   <Insets bottom="15.0" left="60.0" right="60.0" top="15.0" />
