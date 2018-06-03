@@ -15,7 +15,7 @@ Serverska aplikacija dostupna je na [GitHubu](https://github.com/Internecivus/Tr
 
 ## Upute
 1. Downloadajte i instalirajte [Java JDK 10](http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html)
-(pazite da možda IDE koji koristite nema bundelanu verziju manju od 1.9, u suprotnom morate promijeniti verziju ili Maven zastavice).
+(pazite da možda IDE koji koristite nema bundelanu verziju manju od 1.9).
 
 2. Downloadajte i "instalirajte" [Maven](https://maven.apache.org) (opcionalno možete koristiti IDE koji ima integraciju s Mavenom kao što je IntelliJ).
 

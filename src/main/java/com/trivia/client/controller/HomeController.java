@@ -7,6 +7,7 @@ import com.trivia.client.utility.LocaleListCell;
 import com.trivia.client.utility.StageManager;
 import com.trivia.client.utility.i18n;
 import com.trivia.client.view.FXMLEnum;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -22,6 +23,8 @@ import java.util.Locale;
 public class HomeController {
     private final StageManager stageManager;
 
+    private @FXML Button newGameBtn;
+    private @FXML Button exitBtn;
     private @FXML AnchorPane mainPane;
     private @FXML StackPane stackPane;
     private @FXML ComboBox<Locale> languageBox;
@@ -53,6 +56,7 @@ public class HomeController {
             @Override
             public void changed(ObservableValue observable, Locale oldLocale, Locale newLocale) {
                 i18n.setCurrentLocale(newLocale);
+                stageManager.switchScene(FXMLEnum.HOME);
             }
         });
     }
