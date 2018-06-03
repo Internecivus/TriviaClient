@@ -1,6 +1,10 @@
 package com.trivia.client.model;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Question {
     private Integer id;
     private String question;
@@ -10,6 +14,19 @@ public class Question {
     private String answerFourth;
     private int answerCorrect;
     private ImageData imageData;
+    private List<String> answers;
+
+    public void randomizeAnswers() {
+        answers = new ArrayList<>();
+        answers.add(answerFirst);
+        answers.add(answerSecond);
+        answers.add(answerThird);
+        answers.add(answerFourth);
+
+        String correct = answers.get(answerCorrect - 1);
+        Collections.shuffle(answers);
+        answerCorrect = answers.indexOf(correct) + 1;
+    }
 
     public ImageData getImageData() {
         return imageData;
@@ -39,32 +56,16 @@ public class Question {
         this.question = question;
     }
 
-    public String getAnswerFirst() {
-        return answerFirst;
-    }
-
     public void setAnswerFirst(String answerFirst) {
         this.answerFirst = answerFirst;
-    }
-
-    public String getAnswerSecond() {
-        return answerSecond;
     }
 
     public void setAnswerSecond(String answerSecond) {
         this.answerSecond = answerSecond;
     }
 
-    public String getAnswerThird() {
-        return answerThird;
-    }
-
     public void setAnswerThird(String answerThird) {
         this.answerThird = answerThird;
-    }
-
-    public String getAnswerFourth() {
-        return answerFourth;
     }
 
     public void setAnswerFourth(String answerFourth) {
@@ -77,5 +78,9 @@ public class Question {
 
     public void setAnswerCorrect(int answerCorrect) {
         this.answerCorrect = answerCorrect;
+    }
+
+    public List<String> getAnswers() {
+        return answers;
     }
 }

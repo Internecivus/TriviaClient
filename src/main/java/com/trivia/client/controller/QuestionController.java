@@ -111,10 +111,10 @@ public class QuestionController {
             questionLbl.getFont(), questionLbl.getText(), questionLblWidth, 2))
         );
 
-        answerFirstBtn.setText(question.getAnswerFirst());
-        answerSecondBtn.setText(question.getAnswerSecond());
-        answerThirdBtn.setText(question.getAnswerThird());
-        answerFourthBtn.setText(question.getAnswerFourth());
+        answerFirstBtn.setText(question.getAnswers().get(0));
+        answerSecondBtn.setText(question.getAnswers().get(1));
+        answerThirdBtn.setText(question.getAnswers().get(2));
+        answerFourthBtn.setText(question.getAnswers().get(3));
 
         answerFirstBtn.setUserData(1);
         answerSecondBtn.setUserData(2);

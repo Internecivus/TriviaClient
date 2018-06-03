@@ -43,6 +43,7 @@ public class Game {
     }
 
     public void setQuestions(List<Question> questions) {
+        questions.stream().forEach(q -> q.randomizeAnswers());
         this.questions = questions;
     }
 
