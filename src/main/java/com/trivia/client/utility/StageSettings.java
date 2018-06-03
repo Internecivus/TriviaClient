@@ -5,11 +5,11 @@ import javafx.stage.Stage;
 import java.util.prefs.Preferences;
 
 public class StageSettings {
-    private static int DEFAULT_WIDTH = 640;
-    private static int DEFAULT_HEIGHT = 480;
+    private static int DEFAULT_WIDTH = 800;
+    private static int DEFAULT_HEIGHT = 576;
     private static boolean DEFAULT_MAXIMIZED = false;
-    private static int MIN_WIDTH = 480;
-    private static int MIN_HEIGHT = 480;
+    private static int MIN_WIDTH = 640;
+    private static int MIN_HEIGHT = 520;
 
     private static boolean maximized;
     private static double x;
