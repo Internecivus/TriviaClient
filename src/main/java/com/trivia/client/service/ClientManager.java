@@ -14,7 +14,7 @@ import java.util.prefs.Preferences;
 
 
 public class ClientManager {
-    public final static String SERVER_HOST = "http://ec2-52-14-48-132.us-east-2.compute.amazonaws.com";
+    public final static String SERVER_HOST = "http://18.220.145.50";
     public final static String SERVER_PORT = "8080";
     public final static String SERVER_SOCKET = SERVER_HOST + ":" + SERVER_PORT;
     public final static String API_PATH =  "api";
