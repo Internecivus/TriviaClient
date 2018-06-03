@@ -67,7 +67,7 @@
             <GridPane maxWidth="-Infinity" prefWidth="320.0" styleClass="boxLabel" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" vgrow="SOMETIMES" />
@@ -79,7 +79,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="scoreLbl" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="89.0" text="7/10" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                  <Label fx:id="scoreLbl" alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="106.0" text="7/10" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -89,7 +89,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="timeLbl" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="90.0" text="120.25/120 s" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+                  <Label fx:id="timeLbl" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="104.0" text="120.25/120 s" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
