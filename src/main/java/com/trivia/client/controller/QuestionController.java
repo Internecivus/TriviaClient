@@ -141,12 +141,13 @@ public class QuestionController {
     }
 
     private void stopTimer() {
+        game.setTime(game.getTime() + timeline.getCurrentTime().toSeconds());
         timeline.stop();
     }
 
     @FXML
     private void answer(ActionEvent event) {
-        Node node = (Node) event.getSource() ;
+        Node node = (Node) event.getSource();
         Integer userData = (Integer) node.getUserData();
         answer(userData);
     }
@@ -160,7 +161,6 @@ public class QuestionController {
 
     private void answer(int answerNumber) {
         // Stop the timer and get the time.
-        game.setTime(game.getTime() + timeline.getCurrentTime().toSeconds());
         stopTimer();
 
         disableAnswerBtns();
